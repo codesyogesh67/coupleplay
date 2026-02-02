@@ -1,17 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import Header from "@/components/Header";
 import { GameButton } from "@/components/ui/game-button";
 
-export default function Results() {
+export default function Results({
+  score,
+  game,
+}: {
+  score: number | null;
+  game?: string | null;
+}) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const scoreParam = searchParams.get("score");
-  const score = scoreParam ? Number(scoreParam) : null;
 
   const getMessage = (score: number) => {
     if (score >= 90) {
@@ -22,7 +24,6 @@ export default function Results() {
           "You’re deeply connected. Your bond is strong, natural, and full of love.",
       };
     }
-
     if (score >= 75) {
       return {
         emoji: "💞",
@@ -31,7 +32,6 @@ export default function Results() {
           "You understand each other well and grow stronger with every conversation.",
       };
     }
-
     return {
       emoji: "💬",
       title: "Growing Together",
@@ -40,7 +40,7 @@ export default function Results() {
     };
   };
 
-  if (!score) {
+  if (!score || Number.isNaN(score)) {
     return (
       <div className="min-h-screen">
         <Header />
@@ -48,7 +48,6 @@ export default function Results() {
           <p className="text-muted-foreground">
             No results found. Try playing a game first.
           </p>
-
           <GameButton className="mt-6" onClick={() => router.push("/games")}>
             Go to Games
           </GameButton>
@@ -71,12 +70,9 @@ export default function Results() {
             transition={{ duration: 0.6 }}
           >
             <div className="text-6xl mb-6">{result.emoji}</div>
-
             <h1 className="text-3xl font-bold mb-3">{result.title}</h1>
-
             <p className="text-muted-foreground mb-8">{result.description}</p>
 
-            {/* Score */}
             <div className="mb-10">
               <span className="text-sm text-muted-foreground">
                 Your compatibility score
@@ -84,7 +80,6 @@ export default function Results() {
               <div className="text-5xl font-bold mt-2">{score}%</div>
             </div>
 
-            {/* Actions */}
             <div className="space-y-3">
               <GameButton
                 className="w-full"
@@ -101,6 +96,12 @@ export default function Results() {
                 Back to Home
               </GameButton>
             </div>
+
+            {game ? (
+              <p className="mt-6 text-xs text-muted-foreground">
+                Played: {game}
+              </p>
+            ) : null}
           </motion.div>
         </div>
       </main>
