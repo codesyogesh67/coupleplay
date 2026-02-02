@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Game {
+  id        String     @id
+  title     String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  questions Question[]
+}
+
+model Question {
+  id     String @id @default(cuid())
+  gameId String
+  game   Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  text     String
+  category String
+  type     QuestionType
+
+  options  String[] @default([])
+
+  order     Int
+  createdAt DateTime @default(now())
+
+  @@unique([gameId, order])
+  @@index([gameId])
+}
+
+enum QuestionType {
+  discuss
+  choice
+  input
+}
