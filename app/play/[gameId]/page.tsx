@@ -1,4 +1,4 @@
-import { prisma } from "@lib/prisma";
+import { prisma } from "@/lib/prisma";
 import QuestionGameClient from "@/components/QuestionGameClient";
 
 export const runtime = "nodejs"; // IMPORTANT
