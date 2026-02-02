@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Header = () => {
   const router = useRouter();
@@ -29,12 +30,15 @@ const Header = () => {
           <div className="w-10" />
         )}
 
-        <div className="flex items-center gap-2">
+        <Link
+          href="/"
+          className="flex items-center gap-2 hover:opacity-90 transition"
+        >
           <span className="text-xl animate-pulse-heart">❤️</span>
           <span className="font-display text-xl font-semibold gradient-text">
             CouplePlay
           </span>
-        </div>
+        </Link>
 
         <div className="w-10" />
       </div>

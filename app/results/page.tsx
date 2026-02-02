@@ -1,4 +1,4 @@
-import Results from "@/pages/Results";
+import Results from "@/components/games/Results";
 
 export default function Page() {
   return <Results />;
