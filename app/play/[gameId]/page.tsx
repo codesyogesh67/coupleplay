@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@lib/prisma";
 import QuestionGameClient from "@/components/QuestionGameClient";
 
-const prisma = new PrismaClient();
+export const runtime = "nodejs"; // IMPORTANT
 
 type PageProps = {
   params: Promise<{ gameId: string }>;
