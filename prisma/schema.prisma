@@ -24,11 +24,11 @@ model Question {
   text     String
   category String
   type     QuestionType
-
   options  String[] @default([])
 
   order     Int
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([gameId, order])
   @@index([gameId])
