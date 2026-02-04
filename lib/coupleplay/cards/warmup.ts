@@ -1,0 +1,75 @@
+import type { CardDTO } from "../types";
+
+export const WARMUP_CARDS: CardDTO[] = [
+  {
+    id: "w1",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "question",
+    text: "What was your first impression of me?",
+  },
+  {
+    id: "w2",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "scenario",
+    text: "We get a free flight tomorrow. Where do we go and why?",
+  },
+  {
+    id: "w3",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "question",
+    text: "What is one small thing I do that always makes you smile?",
+  },
+  {
+    id: "w4",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "confession",
+    text: "Share one moment you felt really safe with me.",
+  },
+  {
+    id: "w5",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "question",
+    text: "When do you feel closest to me emotionally?",
+  },
+  {
+    id: "w6",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "scenario",
+    text: "We have one hour together with no phones. What do we do?",
+  },
+  {
+    id: "w7",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "guess",
+    text: "Guess: what makes me feel most loved?",
+    options: ["Words", "Touch", "Time", "Acts of help"],
+  },
+  {
+    id: "w8",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "question",
+    text: "What’s your favorite memory of us so far?",
+  },
+  {
+    id: "w9",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "challenge",
+    text: "Say one sweet thing about me in 10 seconds. No thinking.",
+  },
+  {
+    id: "w10",
+    packId: "warmup",
+    packTitle: "Card Confessions",
+    type: "question",
+    text: "What’s something you appreciate about us but don’t say often?",
+  },
+];

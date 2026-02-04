@@ -1,0 +1,75 @@
+import type { CardDTO } from "../types";
+
+export const FUN_CARDS: CardDTO[] = [
+  {
+    id: "f1",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "scenario",
+    text: "We switch lives for a day. What’s the first thing you’d do?",
+  },
+  {
+    id: "f2",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "challenge",
+    text: "Compliment me in the most dramatic way possible. (30 seconds)",
+  },
+  {
+    id: "f3",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "question",
+    text: "If our relationship had a mascot animal, what would it be?",
+  },
+  {
+    id: "f4",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "scenario",
+    text: "We open a restaurant together. What’s the theme and name?",
+  },
+  {
+    id: "f5",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "challenge",
+    text: "Do your best impression of me for 15 seconds.",
+  },
+  {
+    id: "f6",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "guess",
+    text: "Guess: what would I choose for a perfect lazy day?",
+    options: ["Movies", "Walk outside", "Cooking", "Long nap"],
+  },
+  {
+    id: "f7",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "question",
+    text: "What’s my funniest habit that you secretly love?",
+  },
+  {
+    id: "f8",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "scenario",
+    text: "We’re in a reality show. What would we be famous for?",
+  },
+  {
+    id: "f9",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "challenge",
+    text: "Make up a cute couple nickname for us right now.",
+  },
+  {
+    id: "f10",
+    packId: "fun",
+    packTitle: "Laugh & Spill",
+    type: "question",
+    text: "What’s one silly thing we should do at least once together?",
+  },
+];

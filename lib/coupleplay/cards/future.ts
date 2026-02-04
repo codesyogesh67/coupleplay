@@ -1,0 +1,81 @@
+import type { CardDTO } from "../types";
+
+export const FUTURE_CARDS: CardDTO[] = [
+  {
+    id: "fu1",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "question",
+    text: "In two years, what does a perfect weekend look like for us?",
+  },
+  {
+    id: "fu2",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "guess",
+    text: "Guess: what’s my ideal ‘date night’?",
+    options: ["Cozy at home", "Dinner out", "Adventure", "Surprise me"],
+  },
+  {
+    id: "fu3",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "question",
+    text: "What tradition would you love for us to create together?",
+  },
+  {
+    id: "fu4",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "scenario",
+    text: "We plan our first big trip together. Where do we go first?",
+  },
+  {
+    id: "fu5",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "question",
+    text: "What kind of home do you imagine us living in someday?",
+  },
+  {
+    id: "fu6",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "confession",
+    text: "What future moment with us do you secretly daydream about?",
+  },
+  {
+    id: "fu7",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "guess",
+    text: "Guess: what kind of lifestyle do I want in the future?",
+    options: [
+      "Calm & simple",
+      "Busy & ambitious",
+      "Travel-heavy",
+      "Family-focused",
+    ],
+  },
+  {
+    id: "fu8",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "question",
+    text: "What’s one dream you hope we achieve as a couple?",
+  },
+  {
+    id: "fu9",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "scenario",
+    text: "It’s our anniversary in the future. How do we celebrate?",
+  },
+  {
+    id: "fu10",
+    packId: "future",
+    packTitle: "Little Love Cards",
+    type: "challenge",
+    text: "Say one promise for ‘future us’ in one sentence.",
+  },
+];
