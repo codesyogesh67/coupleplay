@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import Header from "@/components/Header";
-import { GameButton } from "@/components/ui/game-button";
+import { Button } from "@/components/ui/button";
 import FloatingHearts from "@/components/FloatingHearts";
 
 export default function Landing() {
@@ -46,12 +46,12 @@ export default function Landing() {
               transition={{ delay: 0.2 }}
               className="space-y-4"
             >
-              <GameButton
+              <Button
                 className="w-full h-14 text-base"
                 onClick={() => router.push("/games")}
               >
                 Start a Game 💕
-              </GameButton>
+              </Button>
 
               <p className="text-xs text-muted-foreground">
                 No signup • No pressure • Just connection

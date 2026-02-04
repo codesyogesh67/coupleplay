@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import Header from "@/components/Header";
-import { GameButton } from "@/components/ui/game-button";
+import { Button } from "@/components/ui/button";
 
 export default function GameNotFound() {
   const router = useRouter();

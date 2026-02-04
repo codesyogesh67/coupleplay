@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import Header from "@/components/Header";
-import { GameButton } from "@/components/ui/game-button";
+import { Button } from "@/components/ui/button";
 
 export default function Results({
   score,
@@ -48,9 +48,9 @@ export default function Results({
           <p className="text-muted-foreground">
             No results found. Try playing a game first.
           </p>
-          <GameButton className="mt-6" onClick={() => router.push("/games")}>
+          <Button className="mt-6" onClick={() => router.push("/games")}>
             Go to Games
-          </GameButton>
+          </Button>
         </main>
       </div>
     );
@@ -81,20 +81,17 @@ export default function Results({
             </div>
 
             <div className="space-y-3">
-              <GameButton
-                className="w-full"
-                onClick={() => router.push("/games")}
-              >
+              <Button className="w-full" onClick={() => router.push("/games")}>
                 Try another game 💕
-              </GameButton>
+              </Button>
 
-              <GameButton
+              <Button
                 variant="skip"
                 className="w-full"
                 onClick={() => router.push("/")}
               >
                 Back to Home
-              </GameButton>
+              </Button>
             </div>
 
             {game ? (

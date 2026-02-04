@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
-import { GameButton } from "@/components/ui/game-button";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 type QType = "discuss" | "choice" | "input";
@@ -139,15 +139,15 @@ export default function QuestionGameClient({
             transition={{ delay: 0.3 }}
             className="mt-8 space-y-3"
           >
-            <GameButton onClick={handleNext} className="w-full">
+            <Button onClick={handleNext} className="w-full">
               {currentIndex === totalQuestions - 1
                 ? "See Results"
                 : "Next Question"}
-            </GameButton>
+            </Button>
 
-            <GameButton variant="skip" onClick={handleSkip} className="w-full">
+            <Button variant="skip" onClick={handleSkip} className="w-full">
               Skip this one
-            </GameButton>
+            </Button>
           </motion.div>
         </div>
       </main>

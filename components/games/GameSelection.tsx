@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 import Header from "@/components/Header";
-import { GameButton } from "@/components/ui/game-button";
+import { Button } from "@/components/ui/button";
 
 type Game = {
   id: string;
@@ -15,25 +15,25 @@ type Game = {
 
 const GAMES: Game[] = [
   {
+    id: "cards",
+    title: "Card Table",
+    description:
+      "Draw random cards, use skip tokens, unlock packs — real game night vibes",
+    emoji: "🃏",
+  },
+  {
     id: "questions",
     title: "Couple Questions",
     description: "Warm, fun questions to spark meaningful conversations",
     emoji: "💖",
   },
   {
-    id: "know-me",
-    title: "How Well Do You Know Me?",
-    description: "Guess your partner’s likes, habits, and thoughts",
-    emoji: "🧠",
-  },
-  {
     id: "compatibility",
-    title: "Compatibility Check",
-    description: "See how aligned your thoughts and values are",
+    title: "Compatibility Night",
+    description: "Answer together and get a thoughtful compatibility summary",
     emoji: "💞",
   },
 ];
-
 export default function GameSelection() {
   const router = useRouter();
 
@@ -78,12 +78,12 @@ export default function GameSelection() {
                       {game.description}
                     </p>
 
-                    <GameButton
+                    <Button
                       onClick={() => startGame(game.id)}
                       className="w-full"
                     >
                       Start Game
-                    </GameButton>
+                    </Button>
                   </div>
                 </div>
               </motion.div>
