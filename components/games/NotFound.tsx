@@ -32,20 +32,17 @@ export default function GameNotFound() {
             </p>
 
             <div className="space-y-3">
-              <GameButton
-                className="w-full"
-                onClick={() => router.push("/games")}
-              >
+              <Button className="w-full" onClick={() => router.push("/games")}>
                 Go back to Games 💘
-              </GameButton>
+              </Button>
 
-              <GameButton
+              <Button
                 variant="skip"
                 className="w-full"
                 onClick={() => router.push("/")}
               >
                 Back to Home
-              </GameButton>
+              </Button>
             </div>
           </motion.div>
         </div>

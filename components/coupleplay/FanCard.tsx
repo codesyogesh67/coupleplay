@@ -6,11 +6,13 @@ export function FanCard({
   i,
   total,
   onPick,
+  containerWidth,
 }: {
   card: CardDTO;
   i: number;
   total: number;
   onPick: (card: CardDTO) => void;
+  containerWidth: number;
 }) {
   const mid = (total - 1) / 2;
   const offset = i - mid;
