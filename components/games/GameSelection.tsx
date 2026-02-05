@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 
+import { headingIn, subheadingIn, listStagger, cardIn } from "@/lib/motion";
+
 type Game = {
   id: string;
   title: string;
@@ -49,45 +51,66 @@ export default function GameSelection() {
         <div className="max-w-lg mx-auto">
           {/* Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            animate="show"
             className="text-center mb-10"
           >
-            <h1 className="text-3xl font-bold mb-3">Choose a Game 💘</h1>
-            <p className="text-muted-foreground">
+            <motion.h1 variants={headingIn} className="text-3xl font-bold mb-3">
+              Choose a Game 💘
+            </motion.h1>
+
+            <motion.p variants={subheadingIn} className="text-muted-foreground">
               Pick a game and start a beautiful conversation together
-            </p>
+            </motion.p>
           </motion.div>
 
           {/* Games list */}
           <div className="space-y-4">
-            {GAMES.map((game, index) => (
-              <motion.div
-                key={game.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-3xl border border-border bg-card p-5 shadow-soft"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl">{game.emoji}</div>
+            <motion.div
+              variants={listStagger}
+              custom={0.18}
+              initial="hidden"
+              animate="show"
+              className="space-y-4"
+            >
+              {GAMES.map((game) => (
+                <motion.div
+                  key={game.id}
+                  variants={cardIn}
+                  whileHover={{ y: -2, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  className="
+                border border-white/20
+                rounded-2xl
+                bg-white/5
+                backdrop-blur-md
+                shadow-md
+                p-5
+              "
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="text-3xl">{game.emoji}</div>
 
-                  <div className="flex-1">
-                    <h2 className="text-lg font-semibold mb-1">{game.title}</h2>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {game.description}
-                    </p>
+                    <div className="flex-1">
+                      <h2 className="text-lg font-semibold mb-1">
+                        {game.title}
+                      </h2>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {game.description}
+                      </p>
 
-                    <Button
-                      onClick={() => startGame(game.id)}
-                      className="w-full"
-                    >
-                      Start Game
-                    </Button>
+                      <Button
+                        onClick={() => startGame(game.id)}
+                        className="w-full"
+                      >
+                        Start Game
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </main>

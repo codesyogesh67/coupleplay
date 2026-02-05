@@ -14,6 +14,9 @@ import { type CardDTO } from "@/lib/coupleplay/types";
 import { PackOverlay } from "./PackOverlay";
 import { FanCard } from "./FanCard";
 
+import { phaseSlide, headingIn, subheadingIn, listStagger, cardIn } from "@/lib/motion";
+
+
 function shuffle<T>(arr: T[]) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -83,28 +86,39 @@ export default function CardTableClient() {
           <AnimatePresence mode="wait">
             {/* ---------------- PACK SELECT ---------------- */}
             {phase === "packs" && (
-              <motion.div
-                key="packs"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                className="space-y-6"
-              >
-                <div className="text-center">
-                <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">
+             <motion.div
+             key="packs"
+             variants={phaseSlide}
+             initial="hidden"
+             animate="show"
+             exit="exit"
+             className="space-y-6"
+           >
+           
+           <motion.div initial="hidden" animate="show" className="text-center">
+  <motion.h1
+    variants={headingIn}
+    className="text-3xl font-bold mb-2 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 bg-clip-text text-transparent"
+  >
   Play with Cards ⭐
-</h1>
+  </motion.h1>
 
 
 
-                  <p className="text-muted-foreground">
-                    Tap a pack to open it. (We’ll add reveal + session flow
-                    next.)
-                  </p>
-                </div>
+  <motion.p variants={subheadingIn} className="text-muted-foreground">
+    Tap a pack to open it. (We’ll add reveal + session flow next.)
+  </motion.p>
+  </motion.div>
+
 
                 {/* Packs */}
-                <div className="p-2">
+                <motion.div
+  variants={listStagger}
+  custom={0.12}           // slower/faster here (0.10–0.18)
+  initial="hidden"
+  animate="show"
+  className="p-2"
+>
                   <div className="grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4">
                     {packs.map((p, index) => {
                       const selected = selectedPacks.includes(p.id);
@@ -141,7 +155,7 @@ export default function CardTableClient() {
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* ✅ Removed Start Card Game button (as you requested) */}
                 {/* If you still want selection logic later, we can reintroduce it in overlay */}
@@ -152,9 +166,10 @@ export default function CardTableClient() {
             {phase === "play" && (
               <motion.div
                 key="play"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
+                variants={phaseSlide}
+                initial="hidden"
+                animate="show"
+                exit="exit"
                 className="space-y-6"
               >
                 <motion.div
