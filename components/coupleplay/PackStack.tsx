@@ -80,10 +80,6 @@ export function PackStack({
                   {title}
                 </div>
               </div>
-
-              <div className="text-[11px] rounded-full bg-white/20 px-3 py-1 text-white/90">
-                {count} cards
-              </div>
             </div>
 
             <div className="mt-3 text-sm text-white/85 leading-relaxed line-clamp-3">
