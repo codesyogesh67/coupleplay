@@ -11,12 +11,12 @@ export default function Landing() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen">
+    <div className="h-[100dvh] overflow-hidden flex flex-col">
       <FloatingHearts />
       <Header />
 
-      <main className="pt-24 pb-16 px-4">
-        <div className="min-h-[calc(100vh-6rem)] flex items-center">
+      <main className="flex-1 flex items-center  justify-center pt-24 pb-16 px-4">
+        <div className="h-[calc(100vh-6rem)]flex items-center">
           <div className="max-w-lg mx-auto text-center w-full">
             {/* Hero */}
             <motion.div
@@ -40,10 +40,10 @@ export default function Landing() {
             </motion.div>
 
             {/* CTA */}
-            <motion.div
+            <div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.3 }}
               className="space-y-4"
             >
               <Button
@@ -56,7 +56,7 @@ export default function Landing() {
               <p className="text-xs text-muted-foreground">
                 No signup • No pressure • Just connection
               </p>
-            </motion.div>
+            </div>
 
             {/* Footer note */}
             <motion.div
