@@ -353,7 +353,7 @@ export function PackOverlay({
         ) : (
           <div className="flex flex-col items-center gap-5">
             <div className="w-full max-w-[92%] text-center">
-              <div className="text-4xl sm:text-[44px] font-semibold leading-[1.25] text-white">
+              <div className="text-2xl sm:text-[44px] font-semibold leading-[1.35] text-white">
                 <Typewriter text={revealed.text} />
               </div>
             </div>

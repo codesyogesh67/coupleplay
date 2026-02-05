@@ -1,4 +1,7 @@
 // lib/motion.ts
+
+import type { Variants } from "framer-motion";
+
 export const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export const pageFade = {
@@ -51,7 +54,7 @@ export const listStagger = {
   }),
 };
 
-export const cardIn = {
+export const cardIn: Variants = {
   hidden: { opacity: 0, y: 24, scale: 0.97 },
   show: {
     opacity: 1,
