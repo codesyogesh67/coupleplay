@@ -12,9 +12,12 @@ import { PACKS } from "@/lib/coupleplay/packs";
 import { CARDS } from "@/lib/coupleplay/cards";
 import { type CardDTO } from "@/lib/coupleplay/types";
 import { PackOverlay } from "./PackOverlay";
-import { FanCard } from "./FanCard";
+
 
 import { phaseSlide, headingIn, subheadingIn, listStagger, cardIn } from "@/lib/motion";
+
+const PICK_COUNT = 5;
+const SKIP_LIMIT = 3;
 
 
 function shuffle<T>(arr: T[]) {
@@ -32,6 +35,10 @@ export default function CardTableClient() {
     "warmup",
     "fun",
   ]);
+
+  const [overlayCards, setOverlayCards] = useState<CardDTO[]>([]);
+  const [overlayQueue, setOverlayQueue] = useState<CardDTO[]>([]);
+  const [overlaySkipsLeft, setOverlaySkipsLeft] = useState(SKIP_LIMIT);
 
   const [skipLeft, setSkipLeft] = useState(3);
   const [deck, setDeck] = useState<CardDTO[]>([]);
@@ -67,6 +74,33 @@ export default function CardTableClient() {
   function endSession() {
     setPhase("done");
   }
+
+  function skipOverlayCard(cardId: string) {
+    if (overlaySkipsLeft <= 0) return;
+  
+    setOverlayCards((prev) => {
+      const idx = prev.findIndex((c) => c.id === cardId);
+      if (idx === -1) return prev;
+  
+      // If no more cards available in the pack, just remove it (or keep it—your choice).
+      if (overlayQueue.length === 0) {
+        const copy = [...prev];
+        copy.splice(idx, 1);
+        return copy;
+      }
+  
+      // Replace this slot with the next card from queue
+      const next = overlayQueue[0];
+      const copy = [...prev];
+      copy[idx] = next;
+      return copy;
+    });
+  
+    setOverlayQueue((q) => q.slice(1));
+    setOverlaySkipsLeft((s) => Math.max(0, s - 1));
+  }
+  
+
 
   const progressCurrent = Math.max(1, discard.length);
   const progressTotal = Math.max(1, discard.length + deck.length + 6);
@@ -147,8 +181,13 @@ export default function CardTableClient() {
                             accent={accent}
                             onToggle={() => {
                               if (locked) return;
-                              // ✅ NEW: open pack overlay (premium)
+                            
+                              const packCards = shuffle(CARDS.filter((c) => c.packId === p.id));
+                            
                               setOpenPackId(p.id);
+                              setOverlayCards(packCards.slice(0, PICK_COUNT));
+                              setOverlayQueue(packCards.slice(PICK_COUNT));
+                              setOverlaySkipsLeft(SKIP_LIMIT);
                             }}
                           />
                         </div>
@@ -257,6 +296,9 @@ export default function CardTableClient() {
                 PACKS.findIndex((p) => p.id === openPack.id) % 5
               ]
             }
+            cards={overlayCards}
+            skipsLeft={overlaySkipsLeft}
+            onSkip={skipOverlayCard}
             onClose={() => setOpenPackId(null)}
           />
         )}
