@@ -1,27 +1,47 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
-export function Typewriter({ text }: { text: string }) {
+type TypewriterProps = {
+  text: string;
+  speed?: number; // ms per character
+  startDelay?: number; // ms before typing starts
+};
+
+export function Typewriter({
+  text,
+  speed = 40,
+  startDelay = 150,
+}: TypewriterProps) {
   const [shown, setShown] = useState("");
 
   // restart typing whenever text changes
-  useMemo(() => {
+  useEffect(() => {
     setShown("");
-    return null;
   }, [text]);
 
   // typing effect
-  useMemo(() => {
-    if (!text) return null;
+  useEffect(() => {
+    if (!text) return;
+
     let i = 0;
-    const id = window.setInterval(() => {
-      i += 1;
-      setShown(text.slice(0, i));
-      if (i >= text.length) window.clearInterval(id);
-    }, 14); // speed
-    return () => window.clearInterval(id);
-  }, [text]);
+    let intervalId: number | null = null;
+
+    const start = () => {
+      intervalId = window.setInterval(() => {
+        i += 1;
+        setShown(text.slice(0, i));
+        if (i >= text.length && intervalId) window.clearInterval(intervalId);
+      }, speed);
+    };
+
+    const timeoutId = window.setTimeout(start, startDelay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      if (intervalId) window.clearInterval(intervalId);
+    };
+  }, [text, speed, startDelay]);
 
   return (
     <div className="whitespace-pre-wrap leading-relaxed">
