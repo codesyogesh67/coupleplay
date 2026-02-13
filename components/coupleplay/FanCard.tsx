@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import type { CardDTO } from "@/lib/coupleplay/cards-data";
+import type { CardDTO } from "@/lib/coupleplay/types";
 
 export function FanCard({
   card,

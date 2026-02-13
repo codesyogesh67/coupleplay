@@ -110,7 +110,7 @@ function reducer(state: State, action: Action): State {
         visible: nextVisible,
       };
     }
-    
+
     case "REPLAY": {
       const nextKept = new Set(state.keptIds);
       if (state.revealed) nextKept.add(state.revealed.id);
@@ -205,6 +205,7 @@ export function PackOverlay({
     revealed: null,
     revealedIndex: null,
     skipsUsed: 0,
+    keptIds: new Set<string>()
   });
 
   useEffect(() => {

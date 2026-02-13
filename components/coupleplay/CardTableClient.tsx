@@ -296,9 +296,9 @@ export default function CardTableClient() {
                 PACKS.findIndex((p) => p.id === openPack.id) % 5
               ]
             }
-            cards={overlayCards}
-            skipsLeft={overlaySkipsLeft}
-            onSkip={skipOverlayCard}
+            // cards={overlayCards}
+            // skipsLeft={overlaySkipsLeft}
+            // onSkip={skipOverlayCard}
             onClose={() => setOpenPackId(null)}
           />
         )}
