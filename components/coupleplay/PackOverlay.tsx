@@ -41,12 +41,15 @@ function typePillClass(t: CardDTO["type"]) {
   }
 }
 
-const CARD_BG: Record<"pink" | "violet" | "sky" | "emerald" | "amber", string> = {
+const CARD_BG: Record<"pink" | "violet" | "sky" | "emerald" | "amber" | "valentine", string> = {
   pink: "from-pink-600 to-rose-600",
   violet: "from-violet-600 to-fuchsia-600",
   sky: "from-sky-600 to-cyan-600",
   emerald: "from-emerald-600 to-teal-600",
   amber: "from-amber-600 to-orange-600",
+
+  // 💘 Valentine special
+  valentine: "from-rose-600 via-pink-600 to-fuchsia-600",
 };
 
 function shuffle<T>(arr: T[]) {
@@ -194,7 +197,7 @@ export function PackOverlay({
   title: string;
   description: string;
   count: number;
-  accent: "pink" | "violet" | "sky" | "emerald" | "amber";
+  accent: "pink" | "violet" | "sky" | "emerald" | "amber" | "valentine";
   onClose: () => void;
 }) {
   const packCards = useMemo(() => CARDS.filter((c) => c.packId === packId), [packId]);
@@ -238,14 +241,14 @@ export function PackOverlay({
 
             <div className="relative flex flex-col h-full p-4 sm:p-6">
               {/* Top bar */}
-              <div className="flex items-start justify-between gap-4">
+              <div className="h-12 sm:h-14 flex items-start justify-between gap-4">
                 <Button variant="secondary" onClick={onClose}>
                   Close
                 </Button>
               </div>
 
               {/* Big card */}
-              <div className="mt-6 flex justify-center">
+              <div className="flex-1 min-h-0 flex items-center justify-center py-4 sm:py-6">
                 <motion.div
                   layoutId={`pack-front-${packId}`}
                   className={[
@@ -286,7 +289,7 @@ export function PackOverlay({
                       ) : (
                         <div className="flex flex-col items-center gap-5">
                           <div className="w-full max-w-[92%] text-center">
-                            <div className="text-2xl sm:text-[44px] font-semibold leading-[1.35] text-white">
+                            <div className="text-2xl sm:text-[28px] font-semibold leading-[1.35] text-white">
                               <Typewriter text={revealed.text} />
                             </div>
                           </div>
