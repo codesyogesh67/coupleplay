@@ -39,9 +39,10 @@ export const PACKS: PackDTO[] = [
       "Unexpected scenarios and playful dilemmas that reveal instincts, choices, and couple chemistry.",
   },
   {
-    id: "delulu-romance",
-    title: "Delulu Romance",
+    id: "delulu_romance",
+    title: "Valentine Vibes 💘",
     description:
-      "Playfully dramatic, cinematic prompts to romanticize your love story and explore dreamy, over-the-top relationship fantasies.",
+      "Flirty prompts, sweet dares, and spicy confessions for Valentine’s season.",
+    locked: false,
   },
 ];
